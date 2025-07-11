@@ -1,2 +1,22 @@
+library(readxl)
+library(dplyr)
 
+# Step 1: Read June sheet starting at row 3
+june_data <- read_excel(
+  "T:/Home/act_dpt/COMMON/Property/Price_Monitoring/2025 Accounts/2025_06_Property Rate Monitor_New .xlsx",
+  sheet = "Jun 2025",
+  skip = 2  # Skip the first two rows
+)
 
+# Step 2: Read May sheet starting at row 3
+may_data <- read_excel(
+  "T:/Home/act_dpt/COMMON/Property/Price_Monitoring/2025 Accounts/2025_06_Property Rate Monitor_New .xlsx",
+  sheet = "May 2025",
+  skip = 2
+)
+
+# Step 3: Combine data (June on top)
+combined_data <- bind_rows(june_data, may_data)
+
+# Step 4: View combined data
+View(combined_data)
